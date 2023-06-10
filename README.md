@@ -1,8 +1,14 @@
 # Exercise-07-Multiplexer-and-De-multiplexer
-### AIM: To implement 4 X1 multiplexer and 1X4 de multiplexer using verilog and validate its outputs
-### HARDWARE REQUIRED:  – PC, Cyclone II , USB flasher
-### SOFTWARE REQUIRED:   Quartus prime
-### THEORY 
+### AIM: 
+To implement 4 X1 multiplexer and 1X4 de multiplexer using verilog and validate its outputs
+
+### HARDWARE REQUIRED:  
+– PC, Cyclone II , USB flasher
+
+### SOFTWARE REQUIRED:  
+Quartus prime
+
+### THEORY: 
 
 ## What are Multiplexer and Demultiplexer?
 In-network transmission, both the multiplexer and demultiplexer are combinational circuits. A multiplexer selects an input from several inputs then it is transmitted in the form of a single line. An alternative name of the multiplexer is MUX or data selector. A demultiplexer uses one input signal and generates many. So it is known as Demux or data distributor.
@@ -46,43 +52,88 @@ If the control input changes to AB = 10, then all the gates are restricted excep
 
  
  
-### Procedure
+### Procedure:
 /* write all the steps invloved */
 
 
 
-### PROGRAM 
+### PROGRAM:
+```
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: Shaik Shoaib Nawaz 
+RegisterNumber: 212222240094  
 */
+i.)For Multiplexer:
+module mux (I0,I1,I2,I3,S0,S1,Y);
+input I0,I1,I2,I3,S0,S1;
+output Y;
+wire S0C,S1C;
+not(S0C,S0);
+not(S1C,S1);
+wire P,Q,R,S;
+and(P,S0C,S1C,I0);
+and(Q,S0C,S1,I1);
+and(R,S0,S1C,I2);
+and(S,S0,S1,I3);
+or(Y,P,Q,R,S);
+endmodule
+
+ii.) For De-Multiplexer:
+module demux(I,S0,S1,Y0,Y1,Y2,Y3);
+input I,S0,S1;
+output Y0,Y1,Y2,Y3;
+wire S0C,S1C;
+not(S0C,S0);
+not(S1C,S1);
+and(Y0,I,S0C,S1C);
+and(Y1,I,S0C,S1);
+and(Y2,I,S0,S1C);
+and(Y3,I,S0,S1);
+endmodule
+```
+### RTL LOGIC: 
+
+i.)For Multiplexer:
+
+![image](https://github.com/shoaib3136/Exercise-07-Multiplexer-and-De-multiplexer/assets/117919362/95f7ad3e-a618-4ac1-86ab-c9d5830e56cf)
+
+
+ii.) For De-Multiplexer:
+
+![image](https://github.com/shoaib3136/Exercise-07-Multiplexer-and-De-multiplexer/assets/117919362/65e211a2-4988-4c1b-96af-7a7f0dbddcab)
+
+
+
+### TIMING DIGRAMS:  
+
+i.)For Multiplexer:
+
+![image](https://github.com/shoaib3136/Exercise-07-Multiplexer-and-De-multiplexer/assets/117919362/f54a527a-041a-41ff-a107-ccd87b9474d6)
+
+ii.) For De-Multiplexer:
+
+![image](https://github.com/shoaib3136/Exercise-07-Multiplexer-and-De-multiplexer/assets/117919362/60649a00-eb09-488e-b94a-22ee340fe337)
 
 
 
 
 
 
-### RTL LOGIC  
+### TRUTH TABLE: 
+
+i.)For Multiplexer:
+
+![image](https://github.com/shoaib3136/Exercise-07-Multiplexer-and-De-multiplexer/assets/117919362/897046cb-1412-429d-9c1e-a46c482f5a82)
+
+
+ii.) For De-Multiplexer:
+
+![image](https://github.com/shoaib3136/Exercise-07-Multiplexer-and-De-multiplexer/assets/117919362/84df0cec-c4ad-4a46-a9b3-8bf6bb9b2818)
 
 
 
 
 
-
-
-
-### TIMING DIGRAMS  
-
-
-
-
-
-### TRUTH TABLE 
-
-
-
-
-
-
-### RESULTS 
+### RESULT: 
+Thus, the 4x1 Multiplexer and 1x4 Demultiplexer is implemented and verified using verilog programming and its output is validated successfully.
